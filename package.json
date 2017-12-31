@@ -20,8 +20,8 @@
     "webpack-dev-server": "^2.9.7"
   },
   "scripts": {
-    "dev-client": "webpack --watch",
-    "dev-server": "nodemon ./server/index.js"
+    "dev": "npm run start & webpack --watch",
+    "start": "nodemon ./server/index.js"
   },
   "repository": {
     "type": "git",
