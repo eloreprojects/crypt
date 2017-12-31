@@ -6,6 +6,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "mongodb": "^3.0.1",
     "nodemon": "^1.14.6"
   },
   "devDependencies": {
@@ -21,7 +22,8 @@
   },
   "scripts": {
     "dev": "npm run start & webpack --watch",
-    "start": "nodemon ./server/index.js"
+    "start": "nodemon ./server/index.js",
+    "server": "mkdir -p ./data/db & mongod --dbpath ./data/db"
   },
   "repository": {
     "type": "git",
