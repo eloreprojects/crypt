@@ -14,5 +14,5 @@ will have 0 indication as to what your personal email actually is. In addition, 
 1. Clone repo and `cd` into directory
 2. Run `npm install` to install dependencies
 3. Run `npm run server` to start local dev server
-4. Run `npm run dev` to start webpack and express server
+4. Run `npm run dev` (in a different terminal tab) to start webpack and express server
 5. Visit localhost:3000
