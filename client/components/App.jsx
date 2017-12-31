@@ -1,31 +1,23 @@
 import React from 'react';
 import AccountList from './AccountList.jsx';
 
-// mock data store
-const data = [
-  {
-    account: 'Google',
-    password: 'foobar1'
-  },
-  {
-    account: 'Facebook',
-    password: 'foobar2'
-  },
-  {
-    account: 'Twitter',
-    password: 'foobar3'
-  },
-  {
-    account: 'Instagram',
-    password: 'foobar4'
-  },
-]
-
 export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      data: []
+    }
+  }
+
   componentWillMount() {
-    this.setState({
-      data
-    });
+    fetch('/accounts')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        this.setState({
+          data
+        });
+      })
   }
 
   render() {

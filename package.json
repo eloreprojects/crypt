@@ -4,7 +4,10 @@
   "description": "An award winning AES secured account manager 🏆",
   "main": "index.js",
   "dependencies": {
-    "babel-preset-env": "^1.6.1"
+    "babel-preset-env": "^1.6.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "nodemon": "^1.14.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -17,7 +20,8 @@
     "webpack-dev-server": "^2.9.7"
   },
   "scripts": {
-    "start": "webpack-dev-server"
+    "dev-client": "webpack --watch",
+    "dev-server": "nodemon ./server/index.js"
   },
   "repository": {
     "type": "git",
