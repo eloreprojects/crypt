@@ -1,0 +1,30 @@
+{
+  "name": "crypt",
+  "version": "1.0.0",
+  "description": "An award winning AES secured account manager 🏆",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eloreprojects/crypt.git"
+  },
+  "contributors": [
+    {
+      "name": "Arun Kirubarajan",
+      "email": "mail@kirubarajan.com",
+      "url": "https://github.com/jeffzh4ng",
+    },
+    {
+      "name": "Jeff Zhang",
+      "email": "zhang.jeffreyd@gmail.com",
+      "url": "https://github.com/jeffzh4ng",
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eloreprojects/crypt/issues"
+  },
+  "homepage": "https://github.com/eloreprojects/crypt#readme"
+}
