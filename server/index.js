@@ -1,63 +1,29 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 const path = require('path');
-const MongoClient = require('mongodb').MongoClient;
+require('dotenv').config();
 
-// initialize server and db url
+// add middleware for parsing json requests
 const app = express();
-const dbUrl = 'mongodb://localhost:27017/crypt';
-
-// bodyParser middleware allows us to acess the req body of route reqs
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-MongoClient.connect(dbUrl, (err, database) => {
-  if (err) {
-    return console.dir(err);
-  }
+// load mongoose models
+const models = require('./models');
+models.connect(process.env.DB_URI, { useMongoClient: true });
 
-  // since database is actually the mongoclient obj
-  const db = database.db('crypt');
+// load signup/login protocol middlewares
+app.use(passport.initialize());
 
-  // create the accounts collection
-  db.createCollection('accounts', (err, collection) => {});
+const signupStrategy = require('./auth/signup');
+const loginStrategy = require('./auth/login');
+const authRoutes = require('./routes/auth');
+const authMiddleware = require('./auth/middleware');
 
-  // close the server
-  database.close();
-});
-
-app.get('/accounts', (req, res) => {
-  MongoClient.connect(dbUrl, (err, database) => {
-    const db = database.db('crypt');
-    const accounts = db.collection('accounts');
-
-    accounts.find().toArray((err, result) => {
-      res.send(result);
-    });
-
-    database.close();
-  });
-});
-
-app.post('/accounts', (req, res) => {
-  MongoClient.connect(dbUrl, (err, database) => {
-    const db = database.db('crypt');
-    const accounts = db.collection('accounts');
-
-    const newAccount = req.body;
-
-    accounts.insert(newAccount, (err, result) => {
-      if (err) {
-        // send a blank object
-        res.send({});
-      } else {
-        res.send(newAccount);
-      }
-    });
-
-    database.close();
-  });
-});
+passport.use('local-signup', signupStrategy);
+passport.use('local-login', loginStrategy);
+app.use('/', authRoutes);
 
 // serve static files in dist so index.html can reference index_bundle.js
 app.use(express.static(path.resolve('dist')));
@@ -68,4 +34,10 @@ app.use((req, res) => {
 });
 
 // start server once we have connceted to db
-app.listen(3000, () => console.log('Server is running 🌏, reach port 3000 👀'));
+app.listen(process.env.PORT, err => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.info("🌎 Peep port %s. 🌎", process.env.PORT);
+  }
+});
