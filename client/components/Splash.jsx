@@ -1,5 +1,6 @@
 import React from 'react';
-import {  Nav, NavItem, NavLink, Container, Row, Col, Jumbotron, Button } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import AccountCard from './AccountCard.jsx';
 
 const marginTop = {
@@ -11,35 +12,32 @@ const marginLeft = {
 };
 
 const Splash = () => (
-  <div>
-    <Container >
-      <Row>
-        <Col md="12"> 
-          <h1 style={marginTop} className="display-3">Crypt</h1>
-          <p className="lead"> A minimalist hyper-secure account manager. </p>
-          <hr className="my-2" />
-          <p>
-            Crypt secures all your internet identities by generating disposable emails to obfuscate
-            accounts through.
-          </p>
-          <p className="lead">
-            <Button color="info">Enter</Button>
-            <Button style={marginLeft} color="secondary">Read More</Button>
-          </p>
-          
-          <h2 style={marginTop}>Demo</h2>
-          <p className="lead"> Stored information is AES encrypted and only be decrypted by you -- not even the Crypt team has access.</p>
-          <Col md="4">
-            <AccountCard
-              notes="You can type notes here! Press the buttons to copy your information to the clipboard." 
-              title="Examples Account"
-              email="g8alg90v@getcrypt.co"
-              password="!ajsuf9v0xx@12$" />
-          </Col>
+  <Container>
+    <Row>
+      <Col md="12"> 
+        <h1 style={marginTop} className="display-3">Crypt</h1>
+        <p className="lead"> A minimalist hyper-secure account manager. </p>
+        <hr className="my-2" />
+        <p>
+          Crypt secures all your internet identities by generating disposable emails to obfuscate
+          accounts through.
+        </p>
+        <p className="lead">
+          <Button color="secondary">Read More</Button>
+          <Link to='/enter'> <Button style={marginLeft} outline color="info"> Enter </Button> </Link>         
+        </p>
+        <h2 style={marginTop}>Demo</h2>
+        <p className="lead"> Stored information is AES encrypted and only be decrypted by you -- not even the Crypt team has access.</p>
+        <Col md="4">
+          <AccountCard
+            notes="You can type notes here! Press the buttons to copy your information to the clipboard." 
+            title="Examples Account"
+            email="g8alg90v@getcrypt.co"
+            password="!ajsuf9v0xx@12$" />
         </Col>
-      </Row>
-    </Container>
-  </div>
+      </Col>
+    </Row>
+  </Container>
 );
 
 export default Splash;
