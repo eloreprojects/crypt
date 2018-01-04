@@ -1,10 +1,14 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Splash from './Splash.jsx';
+import Enter from './Enter.jsx';
 
 const App = () => (
   <BrowserRouter>
-    <Route path="/" component={Splash} />
+    <Switch>
+      <Route path="/enter" component={Enter} />      
+      <Route path="/" component={Splash} />
+    </Switch>
   </BrowserRouter>
 );
 
