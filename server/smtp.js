@@ -1,8 +1,6 @@
 const mailin = require('mailin');
 const nodemailer = require('nodemailer');
 const mongoose = require('mongoose');
-const User = mongoose.model('User');
-const Account = mongoose.model('Account'); 
 require('dotenv').config();
 
 const smtp = `smtps://${process.env.SMTP_EMAIL}:${process.env.SMTP_PASSWORD}@smtp.gmail.com`;
@@ -10,6 +8,9 @@ const transporter = nodemailer.createTransport(smtp);
 
 const models = require('./models');
 models.connect(process.env.DB_URI, { useMongoClient: true });
+
+const User = mongoose.model('User');
+const Account = mongoose.model('Account'); 
 
 mailin.start({
   port: 25,
