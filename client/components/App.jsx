@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Splash from './Splash.jsx';
-import Enter from './Enter.jsx';
+import Splash from './splash/Splash.jsx';
+import Enter from './enter/Enter.jsx';
 
 const App = () => (
   <BrowserRouter>

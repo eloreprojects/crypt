@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import AccountCard from './AccountCard.jsx';
+import AccountCard from '../accounts/AccountCard.jsx';
 
 const marginTop = {
   marginTop: "1.5em",
