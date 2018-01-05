@@ -18,6 +18,8 @@ Each account gets it own secure email and password -- so if a service gets hacke
 DB_URI=
 SECRET=
 PORT=
+SMTP_EMAIL=
+SMTP_PASSWORD=
 ```
 4. Run `npm run server` to start local dev server
 5. Run `npm run dev` (in a different terminal tab) to start webpack and express server
