@@ -24,7 +24,7 @@ export default class LoginForm extends Component {
     };
 
     axios.post('/login', user).then(response => {
-      console.log(response.data.message, response.data.token);
+      localStorage.setItem('token', response.data.token);      
     }).catch(error => {
       console.log(error);
     });
