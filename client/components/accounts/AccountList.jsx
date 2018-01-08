@@ -1,14 +1,30 @@
-import React from 'react';
-import Account from './Account.jsx';
+import React, { Component } from 'react';
+const axios = require('axios');
+import AccountCard from './AccountCard.jsx';
 
-function AccountList(props) {
-  const accounts = props.accounts.map((account) =>
-    <Account account={account.account} password={account.password} />
-  );
+export default class AccountList extends Component{
+  onComponentWillMount() {
+    axios.get('/api/accounts/').then(res => {
+      const list = res.data.accounts.map(account =>
+        <AccountCard 
+          username={account.username} 
+          password={account.password}
+          title={account.title} 
+          notes={account.notes} />
+      );
+      
+      this.state = {};
+      this.setState({ list });
+    });
 
-  return (
-    <ul>{accounts}</ul>
-  );
+    this.render = this.render.bind(this);
+  }
+
+  render() {
+    return (
+      <div>
+        { this.state.list }
+      </div>
+    );
+  }
 }
-
-export default AccountList;
