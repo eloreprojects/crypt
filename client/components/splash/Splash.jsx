@@ -28,13 +28,11 @@ const Splash = () => (
         </p>
         <h2 style={marginTop}>Demo</h2>
         <p className="lead"> Stored information is AES encrypted and only be decrypted by you -- not even the Crypt team has access.</p>
-        <Col md="4">
-          <AccountCard
-            notes="You can type notes here! Press the buttons to copy your information to the clipboard." 
-            title="Examples Account"
-            email="g8alg90v@getcrypt.co"
-            password="!ajsuf9v0xx@12$" />
-        </Col>
+        <AccountCard
+          notes="You can type notes here! Press the buttons to copy your information to the clipboard." 
+          title="Examples Account"
+          email="g8alg90v@getcrypt.co"
+          password="!ajsuf9v0xx@12$" />
       </Col>
     </Row>
   </Container>
