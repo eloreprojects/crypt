@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 const axios = require('axios');
 
-export default class Accounts extends Component {
+class Accounts extends Component {
   componentWillMount() {
     axios.post('/validate', { token: localStorage.getItem('token') }).then(res => {
       if (!res.data.valid) {
-        // redirect
+        this.props.history.push("/enter");
       }
     });
   }
@@ -16,3 +17,5 @@ export default class Accounts extends Component {
     );
   }
 }
+
+export default withRouter(Accounts);
