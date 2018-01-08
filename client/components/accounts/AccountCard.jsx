@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import copy from 'copy-to-clipboard';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { Col, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 import { Notification } from 'react-notification';
 
 const marginLeft = {
@@ -40,21 +40,23 @@ class AccountCard extends Component {
     
   render() {
     return (
-      <Card>
-        <CardBody>
-          <CardTitle>{this.props.title}</CardTitle>
-          <CardText>{this.props.notes}</CardText>
-          <Button onClick={this.handleEmailButton}> Email </Button>
-          <Button onClick={this.handlePasswordButton} style={marginLeft}> Password</Button>
-        </CardBody>
+      <Col md={4}>
+        <Card>
+          <CardBody>
+            <CardTitle>{this.props.title}</CardTitle>
+            <CardText>{this.props.notes}</CardText>
+            <Button onClick={this.handleEmailButton}> Email </Button>
+            <Button onClick={this.handlePasswordButton} style={marginLeft}> Password</Button>
+          </CardBody>
 
-        <Notification
-          isActive={this.state.notification}
-          message={this.state.message}
-          activeClassName={".notification"}
-          onDismiss={this.hideNotification.bind(this)}
-        />
-      </Card>
+          <Notification
+            isActive={this.state.notification}
+            message={this.state.message}
+            activeClassName={".notification"}
+            onDismiss={this.hideNotification.bind(this)}
+          />
+        </Card>
+      </Col>
     );
   }
 }
