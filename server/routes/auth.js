@@ -61,4 +61,21 @@ router.post('/logout', (req, res) => {
   req.logout();
 });
 
+router.post('/validate', (req, res) => {
+  const token = (req.headers.authorization) ? req.headers.authorization : req.body.token;
+
+  jwt.verify(token, process.env.SECRET, (err, decoded) => {
+    if (err || !token) {
+      res.status(200).json({
+        valid: false
+      });
+    }
+    
+    res.status(200).json({
+      user: decoded,
+      valid: true
+    });
+  });
+});
+
 module.exports = router;
