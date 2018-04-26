@@ -16,7 +16,7 @@ class AccountCard extends Component {
       password: this.props.password,
       notification: false,
       message: ""
-    }
+    };
 
     this.handleEmailButton = this.handleEmailButton.bind(this);
     this.handlePasswordButton = this.handlePasswordButton.bind(this);

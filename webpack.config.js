@@ -5,7 +5,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './client/index.html',
   filename: 'index.html',
   inject: 'body'
-})
+});
 
 module.exports = {
   entry: './client/index.js',
@@ -20,4 +20,4 @@ module.exports = {
     ]
   },
   plugins: [HtmlWebpackPluginConfig]
-}
+};
